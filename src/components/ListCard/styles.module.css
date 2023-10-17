@@ -1,0 +1,8 @@
+.listCard{
+    display: flex;
+    flex-wrap: wrap;
+}
+.listCard > div {
+    width: 400px;
+    
+}

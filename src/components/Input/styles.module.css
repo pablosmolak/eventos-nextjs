@@ -5,3 +5,8 @@
     font-size: 12px;
     width: 100%;
 }
+
+.erro{
+    color: red;
+    padding-top: .3rem;
+}

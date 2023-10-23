@@ -2,31 +2,33 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Card from "../Card"
 import styles from "./styles.module.css"
+import { api } from "@/service/api"
+import { mascaraData } from "@/utils/mascaras"
+
 
 export default function ListCard(){
 
     const [eventos, setEventos] = useState([])
 
     useEffect(()=>{
-        axios.get('http://localhost:3010/eventos')
+        api.get('/eventos')
             .then(result => setEventos(result.data))
     }, [])
     
 
-    function formatarData(data) {
-        const [ano, mes, dia] = data.split('-')
-        return `${dia}/${mes}/${ano}`
-    }
+    
 
     return(
         <>
             <div className={styles.listCard}>
-                {eventos.map(e => (
+                {eventos?.map(e => (
                 <Card
                     id={e.id}
+                    imagem={e.imagem}
                     titulo={e.titulo}
-                    dataInicio={formatarData(e.dataInicio)}
-                    dataFim={formatarData(e.dataFim)}
+                    dataInicio={e.dataInicio}
+                    dataFim={e.dataFim}
+                    local={e.local}
                 />
             ))}
             </div>

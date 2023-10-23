@@ -1,7 +1,31 @@
-.titulo {
+.cabecalho {
+    display: flex;
     color: var(--fonteBranco);
-    background-color:var(--corPadrao);
     padding: 11px;
     font-size: 24px;
     font-weight: 700;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px 10px 30px;
+ 
+}
+
+.btncriar{ 
+    border: solid 1px var(--corPadrao);
+    border-radius: 10px;
+    padding: 10px;
+    list-style: none;
+    text-decoration: none;
+    color: var(--corPadrao);
+    font-size: 24px;
+}
+
+.titulo{
+    text-decoration: none;
+    color: var(--corPadrao);
+}
+
+.btncriar:hover{
+    color: #fff;
+    background-color: var(--corPadrao);
 }

@@ -1,0 +1,28 @@
+.backimage{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.desfocar{
+    text-align: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-height: 250px;
+}
+
+.imagem{
+    border-radius: 10px;
+    height: 250px;
+}
+
+.alterar{
+    margin-left: 1000px;
+     
+    right: 150px;
+    background-color: rgb(109, 109, 204);
+    border-radius: 100%;
+    padding: 40px;
+    
+}

@@ -1,6 +1,7 @@
 .listCard{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .listCard > div {
     width: 400px;

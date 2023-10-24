@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import Card from "../Card"
 import styles from "./styles.module.css"
@@ -26,8 +25,8 @@ export default function ListCard(){
                     id={e.id}
                     imagem={e.imagem}
                     titulo={e.titulo}
-                    dataInicio={e.dataInicio}
-                    dataFim={e.dataFim}
+                    dataInicio={mascaraData(e.dataInicio)}
+                    dataFim={mascaraData(e.dataFim)}
                     local={e.local}
                 />
             ))}

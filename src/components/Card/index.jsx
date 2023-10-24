@@ -6,7 +6,7 @@ export default function Card({ id, titulo, dataInicio, dataFim, imagem,local}){
         <>
             <div className={styles.card}>
                 <Link href={`/eventos/${id}`}>
-                <img src={`/${imagem}`} className={styles.imagens}/>
+                <img src={`${imagem}`} className={styles.imagens}/>
                 <div className={styles.info}>
                     <h5 className={styles.data}><p>{dataInicio}</p><p style={{color: "#A9A9A9"}}>{">"}</p><p>{dataFim}</p></h5>
                     <h2 className={styles.cardTitulo}>{titulo}</h2>

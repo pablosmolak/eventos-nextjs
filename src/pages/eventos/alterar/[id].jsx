@@ -30,6 +30,7 @@ export default function editarEventos(){
             setValue('dataInicio',evento.dataInicio)
             setValue('dataFim',evento.dataFim)
             setValue('local',evento.local)
+            setValue('imagem', evento.imagem || "/next.svg")
         }
     },[evento])
     
@@ -38,6 +39,10 @@ export default function editarEventos(){
         try{
             console.log(data)
             const resp = await api.patch(`/eventos/${router.query.id}`, data)
+            
+            setTimeout(()=>{
+                router.push(`/eventos/${router.query.id}`)
+            },1000)
 
         }catch (error) {
             //console.log(error)
@@ -112,7 +117,8 @@ export default function editarEventos(){
                         
                         <div>
                             <Input
-                                type={'file'}
+                                type={'text'}
+                                placeholder="Ex.: http://imagem.com"
                                 control={control}
                                 errors={errors}
                                 name={'imagem'}
@@ -120,7 +126,7 @@ export default function editarEventos(){
                         </div>  
                     </section>
                 
-                <Button value="Realizar Inscrição" style={{width:"400px", backgroundColor: "var(--corPadrao)"}}  />
+                <Button value="Realizar Alteração" style={{width:"400px", backgroundColor: "var(--corPadrao)"}}  />
 
               </form>
         </>

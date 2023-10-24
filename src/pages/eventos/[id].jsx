@@ -37,9 +37,9 @@ export default function EventosID(){
             {mensagem && (<Mensagem texto={"Evento não encontrado!"} tipo={"erro"}/>)}
             {evento &&(
                 <div>
-                    <div className={styles.backimage} style={{'background-image': `url(/${evento.imagem})`}}>
+                    <div className={styles.backimage} style={{'background-image': `url(${evento.imagem})`}}>
                         <div className={styles.desfocar}>
-                            <img className={styles.imagem}src={`/${evento.imagem}`}/>
+                            <img className={styles.imagem}src={`${evento.imagem}`}/>
                             <div>
                                 <Link className={styles.alterar}href={`alterar/${router.query.id}`}><img src="/lapis.svg"/></Link>
                             </div>

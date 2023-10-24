@@ -6,15 +6,20 @@ import Input from "@/components/Input";
 import Label from "@/components/Label";
 import TextArea from "@/components/TextArea";
 import styles from '@/styles/cadastro.module.css'
+import { useRouter } from "next/router";
 
 
 export default function Eventos(){
     const {handleSubmit, control, formState:{errors}} = useForm()
+    let router = useRouter()
    
     async function cadastrar(data){
+        
         try{
-            console.log(data)
             const resp = await api.post('/eventos', data)
+            setTimeout(()=>{
+                router.push(`/eventos/${resp.data.id}`)
+            },1000)
 
         }catch (error) {
             console.log(error)
@@ -23,7 +28,7 @@ export default function Eventos(){
     }
     return(
         <>
-              <Cabecalho titulo={"cu branco"}/>
+              <Cabecalho/>
 
               <form className={styles.forms} onSubmit={handleSubmit(cadastrar)}>
                     <section className={styles.form}>
@@ -90,7 +95,8 @@ export default function Eventos(){
                         
                         <div>
                             <Input
-                                type={'file'}
+                                type={'text'}
+                                placeholder="Ex.: http://imagem.com"
                                 control={control}
                                 errors={errors}
                                 name={'imagem'}

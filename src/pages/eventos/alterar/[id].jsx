@@ -57,89 +57,92 @@ export default function editarEventos(){
     }
     return(
         <>
-              <Cabecalho/>
+            <div className={styles.page}>
+                <Cabecalho/>
+                <div className={styles.Pageconteudo}>
 
-              {mensagem.existe && (<Mensagem texto={mensagem.texto} tipo={mensagem.tipo}/>)}
-              <form className={styles.forms} onSubmit={handleSubmit(alterar)}>
-                    <section className={styles.form}>
-                        <div className={styles.input}>
-                            <div>
-                                <Label texto="Titulo" forhtml="titulo"/>
-                                <Input                 
-                                    type="text" 
-                                    placeholder="Ex.: Workshop de Artesanato"
-                                    id="titulo" 
-                                    name="titulo"      
+                    {mensagem.existe && (<Mensagem texto={mensagem.texto} tipo={mensagem.tipo}/>)}
+                    <form className={styles.forms} onSubmit={handleSubmit(alterar)}>
+                        <section className={styles.form}>
+                            <div className={styles.input}>
+                                <div>
+                                    <Label texto="Titulo" forhtml="titulo"/>
+                                    <Input                 
+                                        type="text" 
+                                        placeholder="Ex.: Workshop de Artesanato"
+                                        id="titulo" 
+                                        name="titulo"      
+                                        control={control}
+                                        errors={errors}
+                                        rules={{required:"Titulo do Evento é Obrigatório!"}}                          
+                                    />
+                                </div>
+                                <div>
+                                    <Label texto="Descricao" forhtml="descricao"/>
+                                    <TextArea
+                                        linhas={3}
+                                        placeholder="Ex.: Workshop de Artesanato"
+                                        id="descricao" 
+                                        name="descricao"
+                                        errors={errors}
+                                        control={control}     
+                                        rules={{required:"Descricão do Evento é Obrigatória!"}}                       
+                                    />
+                                </div>
+                                <div>
+                                    <Label texto="Data Inicio" forhtml="dataInicio"/>
+                                    <Input     
+                                        type="date"
+                                        id="dataInicio" 
+                                        name="dataInicio"
+                                        errors={errors}
+                                        control={control}      
+                                        rules={{required:"Titulo do Inicio do Evento é Obrigatória!"}}                      
+                                    />
+                                </div>
+                                <div>
+                                    <Label texto="Data Fim"  forhtml="dataFim"/>
+                                    <Input
+                                        type="date" 
+                                        id="dataFim" 
+                                        name="dataFim"
+                                        errors={errors}
+                                        control={control}    
+                                        rules={{required:"Data do Fim do Evento é Obrigatória!"}}                        
+                                    />
+                                </div>
+                                <div>
+                                    <Label texto="Local" forhtml="local"/>
+                                    <Input   
+                                        type="text" 
+                                        placeholder="Ex.: Workshop de Artesanato"
+                                        id="local" 
+                                        errors={errors}
+                                        name="local"
+                                        control={control} 
+                                        rules={{required:"Local do Evento é Obrigatório!"}}                           
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className={styles.input}>
+                                <Label texto="Imagem" forhtml="imagem"/>
+                                <Input
+                                    type={'text'}
+                                    placeholder="Ex.: http://imagem.com"
                                     control={control}
                                     errors={errors}
-                                    rules={{required:"Titulo do Evento é Obrigatório!"}}                          
+                                    name={'imagem'}
+                                    rules={{required:"Imagem do Evento é Obrigatória!"}}
                                 />
-                            </div>
-                            <div>
-                                <Label texto="Descricao" forhtml="descricao"/>
-                                <TextArea
-                                    linhas={3}
-                                    placeholder="Ex.: Workshop de Artesanato"
-                                    id="descricao" 
-                                    name="descricao"
-                                    errors={errors}
-                                    control={control}     
-                                    rules={{required:"Descricão do Evento é Obrigatória!"}}                       
-                                />
-                            </div>
-                            <div>
-                                <Label texto="Data Inicio" forhtml="dataInicio"/>
-                                <Input     
-                                    type="date"
-                                    id="dataInicio" 
-                                    name="dataInicio"
-                                    errors={errors}
-                                    control={control}      
-                                    rules={{required:"Titulo do Inicio do Evento é Obrigatória!"}}                      
-                                />
-                            </div>
-                            <div>
-                                <Label texto="Data Fim"  forhtml="dataFim"/>
-                                <Input
-                                    type="date" 
-                                    id="dataFim" 
-                                    name="dataFim"
-                                    errors={errors}
-                                    control={control}    
-                                    rules={{required:"Data do Fim do Evento é Obrigatória!"}}                        
-                                />
-                            </div>
-                            <div>
-                                <Label texto="Local" forhtml="local"/>
-                                <Input   
-                                    type="text" 
-                                    placeholder="Ex.: Workshop de Artesanato"
-                                    id="local" 
-                                    errors={errors}
-                                    name="local"
-                                    control={control} 
-                                    rules={{required:"Local do Evento é Obrigatório!"}}                           
-                                />
-                            </div>
-                        </div>
+                            </div>  
+                        </section>
                         
-                        <div className={styles.input}>
-                            <Label texto="Imagem" forhtml="imagem"/>
-                            <Input
-                                type={'text'}
-                                placeholder="Ex.: http://imagem.com"
-                                control={control}
-                                errors={errors}
-                                name={'imagem'}
-                                rules={{required:"Imagem do Evento é Obrigatória!"}}
-                            />
-                        </div>  
-                    </section>
-                
-                <Button value="Realizar Alteração" style={{width:"400px", backgroundColor: "var(--corPadrao)"}}  />
-
-              </form>
-              <Rodape style={{position:'absolute',bottom: '0'}}/>
+                        <Button value="Realizar Alteração" style={{width:"400px", backgroundColor: "var(--corPadrao)"}}  />
+                    </form>
+                </div>
+                <Rodape/>
+            </div>
         </>
     )
 }

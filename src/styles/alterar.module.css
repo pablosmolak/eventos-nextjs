@@ -16,4 +16,14 @@
     width: 400px;
 }
 
+.page{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+  
+.Pageconteudo{
+    flex-grow: 1;
+}
+
 

@@ -7,30 +7,41 @@ import Label from "@/components/Label";
 import TextArea from "@/components/TextArea";
 import styles from '@/styles/cadastro.module.css'
 import { useRouter } from "next/router";
+import Rodape from "@/components/Rodape";
+import Mensagem from "@/components/Mensagem";
+import { useState } from "react";
 
 
 export default function Eventos(){
     const {handleSubmit, control, formState:{errors}} = useForm()
+    const [mensagem, setMensagem] = useState({existe:false ,texto:"", tipo:""})
+
     let router = useRouter()
+    
+
    
     async function cadastrar(data){
-        
+        setMensagem({existe:false})
+       
         try{
             const resp = await api.post('/eventos', data)
+            setMensagem({existe:true,texto:"Evento Cadastrado Com Sucesso!", tipo:'sucesso'})
             setTimeout(()=>{
                 router.push(`/eventos/${resp.data.id}`)
             },1000)
 
         }catch (error) {
-            console.log(error)
+            setMensagem({existe:true, texto:"Erro ao Cadastrar Evento!", tipo:"erro"})
+            //console.log(error)
         }
 
     }
     return(
         <>
               <Cabecalho/>
-
-              <form className={styles.forms} onSubmit={handleSubmit(cadastrar)}>
+              
+                {mensagem.existe && (<Mensagem texto={mensagem.texto} tipo={mensagem.tipo}/>)}
+                <form className={styles.forms} onSubmit={handleSubmit(cadastrar)}>
                     <section className={styles.form}>
                         <div className={styles.input}>
                             <div>
@@ -54,7 +65,7 @@ export default function Eventos(){
                                     name="descricao"
                                     errors={errors}
                                     control={control}     
-                                    rules={{required:"descricão do Evento é Obrigatória!"}}                       
+                                    rules={{required:"Descricão do Evento é Obrigatória!"}}                       
                                 />
                             </div>
                             <div>
@@ -93,19 +104,22 @@ export default function Eventos(){
                             </div>
                         </div>
                         
-                        <div>
+                        <div className={styles.input}>
+                            <Label texto="Imagem" forhtml="imagem"/>
                             <Input
                                 type={'text'}
                                 placeholder="Ex.: http://imagem.com"
                                 control={control}
                                 errors={errors}
                                 name={'imagem'}
+                                rules={{required:"Imagem do Evento é Obrigatória!"}}
                             />
                         </div>  
                     </section>
                 
                 <Button value="Realizar Inscrição" style={{width:"400px", backgroundColor: "var(--corPadrao)"}}  />
-
+                
+                <Rodape style={{position:'absolute',bottom: '0'}}/>
               </form>
 
         </>

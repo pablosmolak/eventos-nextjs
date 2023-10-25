@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "@/styles/alterar.module.css"
 import TextArea from "@/components/TextArea";
+import Rodape from "@/components/Rodape";
+import Mensagem from "@/components/Mensagem";
 
 
 export default function editarEventos(){
@@ -15,6 +17,9 @@ export default function editarEventos(){
     const [evento, setEvento] = useState({})
     const router = useRouter()
     const {handleSubmit, control, formState:{errors}, setValue} = useForm({})
+    const [mensagem, setMensagem] = useState({existe:false ,texto:"", tipo:""})
+
+
 
     useEffect(() => {
         if(router.query.id){
@@ -30,7 +35,7 @@ export default function editarEventos(){
             setValue('dataInicio',evento.dataInicio)
             setValue('dataFim',evento.dataFim)
             setValue('local',evento.local)
-            setValue('imagem', evento.imagem || "/next.svg")
+            setValue('imagem', evento.imagem)
         }
     },[evento])
     
@@ -39,19 +44,22 @@ export default function editarEventos(){
         try{
             console.log(data)
             const resp = await api.patch(`/eventos/${router.query.id}`, data)
-            
+            setMensagem({existe:'true',texto:"Evento Editado Com Sucesso!", tipo:'sucesso'})
             setTimeout(()=>{
                 router.push(`/eventos/${router.query.id}`)
             },1000)
 
         }catch (error) {
+            setMensagem({existe:'true', texto:"Erro ao Editar Evento!", tipo:"erro"})
             //console.log(error)
         }
 
     }
     return(
         <>
-              <Cabecalho titulo={"cu branco"}/>
+              <Cabecalho/>
+
+              {mensagem.existe && (<Mensagem texto={mensagem.texto} tipo={mensagem.tipo}/>)}
               <form className={styles.forms} onSubmit={handleSubmit(alterar)}>
                     <section className={styles.form}>
                         <div className={styles.input}>
@@ -115,13 +123,15 @@ export default function editarEventos(){
                             </div>
                         </div>
                         
-                        <div>
+                        <div className={styles.input}>
+                            <Label texto="Imagem" forhtml="imagem"/>
                             <Input
                                 type={'text'}
                                 placeholder="Ex.: http://imagem.com"
                                 control={control}
                                 errors={errors}
                                 name={'imagem'}
+                                rules={{required:"Imagem do Evento é Obrigatória!"}}
                             />
                         </div>  
                     </section>
@@ -129,6 +139,7 @@ export default function editarEventos(){
                 <Button value="Realizar Alteração" style={{width:"400px", backgroundColor: "var(--corPadrao)"}}  />
 
               </form>
+              <Rodape style={{position:'absolute',bottom: '0'}}/>
         </>
     )
 }

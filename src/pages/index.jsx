@@ -7,9 +7,17 @@ import styles from '@/styles/Home.module.css'
 export default function Home() {
   return (
     <>
-        <Cabecalho titulo={"Plataforma de eventos"}/>
-        <ListCard/>
-        
+        <div className={styles.page}>
+
+          <Cabecalho/>
+
+          <div className={styles.conteudo}>
+            <ListCard/>
+          </div>
+
+          <Rodape style={{bottom: '0'}}/>
+          
+        </div>
     </>
   )
 }

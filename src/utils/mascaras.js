@@ -19,3 +19,10 @@ export const mascaraData = (data) => {
     
     return `${dia} ${meses[mes]}`
 }
+
+export const mascaraDataEvento = (data) => {
+    
+    const [ano,mes, dia] = data.split('-')
+    
+    return `${dia}/${mes}/${ano}`
+}

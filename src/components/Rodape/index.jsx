@@ -1,12 +1,11 @@
 import styles from "./styles.module.css"
 
-export default function Rodape(){
+export default function Rodape({...props}){
 
     return(
         <>
-            <footer>
-                <p className={styles.rodape}>Rodapé
-                </p>
+            <footer className={styles.rodape}{...props}>
+               <p>Todos os Direitos Reservados à Plataforma de Eventos©️</p>
             </footer>
         </>
     )

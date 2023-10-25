@@ -7,6 +7,7 @@ import Mensagem from "@/components/Mensagem";
 import styles from "@/styles/eventos.module.css"
 import Button from "@/components/Button";
 import Link from "next/link";
+import { mascaraDataEvento } from "@/utils/mascaras";
 
 export default function EventosID(){
     const [evento,setEvento] = useState()
@@ -45,12 +46,22 @@ export default function EventosID(){
                             </div>
                         </div>
                     </div>
-                    <h1>{evento.titulo}</h1>
-                    <p>{evento.descricao}</p>
+                    <section className={styles.conteudo}>
+                        <h1 className={styles.conteudoTitulo}>{evento.titulo}</h1>
+                        <div className={styles.conteudoInfo}> 
+                            <p>{evento.descricao}</p>
+                            <div className={styles.conteudoEmojis}>
+                                <h5 className={styles.data}>🗓️<p>{mascaraDataEvento(evento.dataInicio)}</p><p>{"à"}</p><p>{mascaraDataEvento(evento.dataFim)}</p></h5>
+                                <p>📍 {evento.local}</p>
+                            </div>
+                            
+                        </div>
+
+                    </section>
 
                 </div>
             )}
-            <Rodape/>
+            <Rodape style={{position:'absolute',bottom: '0'}}/>
         </>
     )
 }

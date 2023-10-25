@@ -2,8 +2,9 @@
     margin: 10px;
     border-radius: 8px;   
     font-size: 12px;
-    color: #332563;
     max-width: 270px;
+    border: 0.5px solid #00000049;
+    height: 280px;
 }
 
 .card a{
@@ -13,7 +14,7 @@
 
 .card:hover{
     cursor: pointer;
-    background-color: #892be236;
+    background-color: #0b5df53a;
 }
 
 .cardTitulo{
@@ -31,7 +32,7 @@
 }
 
 .imagens{
-    border-radius: 10px 10px 0 0;
+    border-radius: 7px 7px 0 0;
     display: inline-block;
     width: 100%;
     max-height: 140px;

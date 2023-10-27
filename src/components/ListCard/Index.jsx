@@ -21,7 +21,7 @@ export default function ListCard(){
         <>
             <div className={styles.listCard}>
                 {eventos?.map(e => (
-                <Card
+                <Card key={e.id}
                     id={e.id}
                     imagem={e.imagem}
                     titulo={e.titulo}

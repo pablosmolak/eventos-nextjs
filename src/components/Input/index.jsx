@@ -21,7 +21,6 @@ export default function Input({name, control, errors, rules, type, placeholder, 
                     />
                 }
             />
-            {console.log(errors)}
             {errors[name] && <span className={styles.erro}>{errors[name].message}</span>}
     
 

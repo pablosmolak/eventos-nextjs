@@ -3,7 +3,7 @@ import axios from "axios";
 export function apiCliente() {
 
   const api = axios.create({
-    baseURL: "https://api-eventos-nextjs.vercel.app/",
+    baseURL: "http://localhost:3010/",
   });
 
   return api;

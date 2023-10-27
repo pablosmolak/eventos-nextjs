@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { api } from "@/service/api";
 import Mensagem from "@/components/Mensagem";
 import styles from "@/styles/eventos.module.css"
-import Button from "@/components/Button";
 import Link from "next/link";
 import { mascaraDataEvento } from "@/utils/mascaras";
 
@@ -36,7 +35,7 @@ export default function EventosID(){
                     setMensagem({existe:'true', texto:"Evento Deletado com Sucesso!", tipo:"sucesso"})
                     setTimeout(()=>{
                         router.push(`/`)
-                    },900)
+                    },500)
                 })
         } catch (error) {
             
@@ -59,11 +58,15 @@ export default function EventosID(){
                             <div className={styles.backimage} style={{'backgroundImage': `url(${evento.imagem})`}}>
                                 <div className={styles.desfocar}>
                                     <img className={styles.imagem}src={`${evento.imagem}`}/>
-                                    <div>
-                                        <Link className={styles.alterar}href={`alterar/${router.query.id}`}><img src="/lapis.svg"/></Link>
-                                    </div>
-                                    <div>
-                                        <Button onClick={deletar}/>
+                                    <div className={styles.botoesContainer}>
+                                        <div className={styles.botoes}>
+                                            <div>
+                                                <Link href={`alterar/${router.query.id}`}><img className={styles.alterar} src="/lapis.svg"/></Link>
+                                            </div>
+                                            <div>
+                                                <a onClick={deletar} ><img className={styles.deletar} src="/lixeira.svg" alt="" /></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

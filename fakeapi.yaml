@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smolak-api-eventos
+spec:
+  selector:
+    matchLabels:
+      app: smolak-api-eventos
+  template:
+    metadata:
+      labels:
+        app: smolak-api-eventos
+    spec:
+      containers:
+      - name: smolak-api-eventos
+        image: pablosmolak/smolak-api-eventos
+        resources:
+        {}
+        ports:
+        - containerPort: 3010
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smolak-api-eventos
+spec:
+  selector:
+    app: smolak-api-eventos
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3010
+

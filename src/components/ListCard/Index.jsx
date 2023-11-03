@@ -7,7 +7,7 @@ import { mascaraData } from "@/utils/mascaras"
 
 export default function ListCard(){
 
-    const [eventos, setEventos] = useState([])
+    const [eventos, setEventos] = useState()
 
     useEffect(()=>{
         api.get('/eventos')
@@ -21,8 +21,9 @@ export default function ListCard(){
         <>
             <div className={styles.listCard}>
                 {eventos?.map(e => (
-                <Card key={e.id}
-                    id={e.id}
+                   
+                <Card key={e._id}
+                    id={e._id}
                     imagem={e.imagem}
                     titulo={e.titulo}
                     dataInicio={mascaraData(e.dataInicio)}

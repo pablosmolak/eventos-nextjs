@@ -19,8 +19,9 @@ export default function EventosID(){
         if(router.query.id){
             api.get(`/eventos/${router.query.id}`)
                 .then(result => setEvento(result.data))
-                .catch(function (error) {
-                    if (error.response.status == 404) {
+                .catch((error) => {
+                    console.log(error)
+                    if (error.response.status == 404 || error.response.status == 500) {
                         setMensagem({existe:'true', texto:"Evento não encontrado!", tipo:"erro"})  
                     } 
                 })

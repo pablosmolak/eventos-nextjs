@@ -28,7 +28,7 @@ export default function Eventos(){
             //console.log(resp)
             setMensagem({existe:true,texto:"Evento Cadastrado Com Sucesso!", tipo:'sucesso'})
             setTimeout(()=>{
-                router.push(`/eventos/${resp.data.id}`)
+                router.push(`/eventos/${resp.data._id}`)
             },1000)
 
         }catch (error) {

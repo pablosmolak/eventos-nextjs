@@ -21,7 +21,7 @@ export default function EventosID(){
                 .then(result => setEvento(result.data))
                 .catch((error) => {
                     console.log(error)
-                    if (error.response.status == 404 || error.response.status == 500) {
+                    if (error.response.status == 404 || error.response.status == 502) {
                         setMensagem({existe:'true', texto:"Evento não encontrado!", tipo:"erro"})  
                     } 
                 })

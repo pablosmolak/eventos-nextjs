@@ -7,7 +7,6 @@
 }
 
 .textarea::placeholder {
-    font-family: var(--font-quick);
     font-size: 14px;
 }
 

@@ -2,9 +2,8 @@
     color: var(--fonteBranco);
     background-color: var(--corPadrao);
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     width: 100%;
     padding: .8rem;  
-    bottom: 0;
-    
+    bottom: 0;  
 }
